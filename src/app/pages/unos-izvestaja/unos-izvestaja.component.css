@@ -1,0 +1,52 @@
+.tabela, th, td{
+    border: 1px solid black;
+}
+
+.dugme {
+    background-color: #149bc4;
+    border: none;
+    color: white;
+    padding: 4px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 12px;
+    margin-left: 20px;
+    border-radius: 8px;
+  }
+
+  .tabela{
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .clientInputContainter {
+    margin: 10px 20px 10px 20px;
+  }
+  .clientInputContainter>input{
+        margin-right: 20px;
+  }
+  .clientInputContainter>select{
+      margin-right: 20x;
+  }
+
+  .dugmeSacuvaj {
+    background-color: #149bc4;
+    border: none;
+    color: white;
+    padding: 4px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 12px;
+    margin-left: 20px;
+    border-radius: 8px;
+  }
+
+  .kriterijumContainer{
+    margin-left: 20px;
+    margin-bottom: 15px;
+  }

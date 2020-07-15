@@ -13,6 +13,7 @@ import { PretragaKlijentaComponent } from './pages/pretraga-klijenta/pretraga-kl
 import { FormBuilder } from '@angular/forms';
 import { UnosIzvestajaComponent } from './pages/unos-izvestaja/unos-izvestaja.component';
 import { HomeComponent } from './pages/home/home.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { HomeComponent } from './pages/home/home.component';
     BrowserModule,
     AppRoutingModule,
     //ReactiveFormsModule,
+    HttpClientModule
     
   ],
   providers: [FormBuilder],

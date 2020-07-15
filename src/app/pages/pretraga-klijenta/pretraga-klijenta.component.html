@@ -1,16 +1,15 @@
 <p><button type="button" class = "dugme" routerLink = "/unos-klijenta">Unos novog klijenta</button></p>
 
 <div class="kriterijumContainer">
-    <label for="kriterijumPretrageKlijenata">Kriterijum za pretragu izvestaja:</label>
+    <label for="kriterijumPretrageKlijenata">Kriterijum za pretragu klijenata:</label>
     <input type="text" id="kriterijumPretrageKlijenata" name="kriterijumPretrageKlijenata">
 
-    <button type="button" class = "dugme">Pretrazi</button>
+    <button type="button" class = "dugme" (click) = "getKlijentiFizicko()">Pretrazi</button>
 </div>
 
 
     <table style="width:100%" class= "tabela">
         <tr>
-        <th>RB</th>
         <th>JMBG</th>
         <th>Ime i prezime</th>
         <th>Datum rodjenja</th>
@@ -19,12 +18,23 @@
         <th>E-mail</th>
         <th>Adresa</th>
         </tr>
+
+        <tr *ngFor = "let klijent of klijenti;  let i = index" (click)="selectRow(i)">
+            <td>{{klijent.jmbg}}</td>
+            <td>{{klijent.imePrezime}}</td>
+            <td>{{klijent.datumRodj}}</td>
+            <td>{{klijent.drzavljanstvo}}</td>
+            <td>{{klijent.brlk}}</td>
+            <td>{{klijent.email}}</td>
+            <td>{{klijent.adresa}}</td>
+        </tr>
     </table>
+
 
 <div class="dugmici">
     <button type="button" class = "dugme">Izmeni</button>
 
-    <button type="button" class = "dugme">Obrisi</button>
+    <button type="button" class = "dugme" (click) = "remove()">Obrisi</button>
 
     <button type="button" class = "dugme">Prikazi</button>
 </div>

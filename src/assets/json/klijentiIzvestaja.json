@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "naziv": "Petar Petrovic",
+        "email": "peralegenda@gmail.com"
+    },
+    {
+        "id": 2,
+        "naziv": "Dzon Vik",
+        "email": "dzoni@gmail.com"
+    },
+    {
+        "id": 3,
+        "naziv": "Banka Intesa",
+        "email": "intesa@gmail.com"
+    },
+    {
+        "id": 4,
+        "naziv": "Luis Nazario de Lima Ronaldo",
+        "email": "onajpravi@gmail.com"
+    }
+
+]

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-unos-klijenta',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./unos-klijenta.component.css']
 })
 export class UnosKlijentaComponent implements OnInit {
+racuni;
+  constructor(
+    private http:HttpClient
+  ) { }
 
-  constructor() { }
+ getRacuni(){
+   this.http.get("assets/json/racuni.json").toPromise().then((data) => {
+     this.racuni = data;
+   });
+ } 
 
-  ngOnInit(): void {
-  }
+
+ngOnInit(){
+}
 
 }

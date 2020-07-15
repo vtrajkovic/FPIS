@@ -31,7 +31,10 @@
   .clientInputContainter>select{
       margin-right: 20x;
   }
-
+ 
+  .kriterijumLabel{
+    margin-left: 20px;
+  }
   .dugmeSacuvaj {
     background-color: #149bc4;
     border: none;

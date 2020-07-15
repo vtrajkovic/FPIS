@@ -1,0 +1,26 @@
+[
+    {
+        "id":1,
+        "datum": "15.1.2020",
+        "klijent": "Pera Peric",
+        "nalogid": 123 
+    },
+    {
+        "id":2,
+        "datum": "16.1.2020",
+        "klijent": "Vladimir Trajkovic",
+        "nalogid": 124
+    },
+    {
+        "id":3,
+        "datum": "17.1.2020",
+        "klijent": "Damir Kerkez",
+        "nalogid": 125 
+    },
+    {
+        "id":4,
+        "datum": "18.1.2020",
+        "klijent": "Jovan Radosavljevic",
+        "nalogid": 126 
+    }
+]

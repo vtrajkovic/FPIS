@@ -1,0 +1,17 @@
+[
+    {
+        "brojRacuna": "111-3258965487-000",
+        "zaPlatu": "da",
+        "tip": "dinarski"
+    },
+    {
+        "brojRacuna": "111-1478523698-000",
+        "zaPlatu": "ne",
+        "tip": "devizni"
+    },
+    {
+        "brojRacuna": "111-3258965487-000",
+        "zaPlatu": "ne",
+        "tip": "stedni"
+    }
+]

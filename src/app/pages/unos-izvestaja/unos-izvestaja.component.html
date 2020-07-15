@@ -2,7 +2,9 @@
   <label for="kriterijumPretrageIzvestaja">Kriterijum za pretragu izvestaja:</label>
   <input type="text" id="kriterijumPretrageIzvestaja" name="kriterijumPretrageIzvestaja">
 
-  <button type="button" class = "dugme">Pronadji</button>
+  <button type="button" class = "dugme" (click) = "getIzvestaji()">Pronadji</button>
+  
+
 </div>
 
 <table style="width:100%" class= "tabela">
@@ -11,6 +13,12 @@
       <th>Datum</th>
       <th>Klijent</th>
       <th>Radni nalog</th>
+    </tr>
+    <tr *ngFor = "let izvestaj of izvestaji">
+      <td>{{izvestaj.id}}</td>
+      <td>{{izvestaj.datum}}</td>
+      <td>{{izvestaj.klijent}}</td>
+      <td>{{izvestaj.nalogid}}</td>
     </tr>
 </table>
 
@@ -27,16 +35,25 @@
 
 </select>
 
-<label for="kriterijumPretrageKlijenta">Kriterijum za pretragu klijenta:</label>
+<label for="kriterijumPretrageKlijenta" class="kriterijumLabel">Kriterijum za pretragu klijenta:</label>
 <input type="text" id="kriterijumPretrageKlijenta" name="kriterijumPretrageKlijenta">
+
+<button type="button" class = "dugme" (click) = "getKlijenti()">Pronadji</button>
+
 </div>
 <table style="width:100%" class= "tabela">
     <tr>
-      <th>RB</th>
       <th>ID</th>
       <th>Naziv klijenta</th>
       <th>E-mail</th>
     </tr>
+
+    <tr *ngFor = "let klijent of klijenti">
+      <td>{{klijent.id}}</td>
+      <td>{{klijent.naziv}}</td>
+      <td>{{klijent.email}}</td>
+    </tr>
+
 </table>
 
 <button type="button" class = "dugmeSacuvaj">Sacuvaj izvestaj</button>

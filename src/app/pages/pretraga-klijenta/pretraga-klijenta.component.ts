@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { RouterLink } from '@angular/router';
+import { MetodeAPIService } from 'src/app/metode-api.service';
 
 @Component({
   selector: 'app-pretraga-klijenta',
@@ -9,24 +11,27 @@ import { HttpClient } from '@angular/common/http';
 export class PretragaKlijentaComponent implements OnInit {
 klijenti;
 private selectedRowIndex: number;
+private selectedRow;
   constructor(
     private http: HttpClient,
+    private metodaAPI: MetodeAPIService,
   ) { }
 
-  getKlijentiFizicko(){
-    this.http.get("assets/json/klijentFizicko.json").toPromise().then((data) => {
+  uzmiKlijenteFizicko(){
+    this.metodaAPI.getKlijentiFizicko().subscribe((data) => 
+    {
       this.klijenti = data;
     });
   }
-
-  remove(index:number){
-    this.klijenti.splice(this.selectedRowIndex, 1);
-  }
-  ngOnInit(): void {
+  ngOnInit(){
   }
 
   selectRow(index){
-    console.log("selected row index",index);
     this.selectedRowIndex = index;
   }
+
+  obrisiKlijenta(index) {
+    this.klijenti.splice(index,1);
+  }
+
 }

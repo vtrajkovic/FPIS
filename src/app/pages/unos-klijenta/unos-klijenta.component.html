@@ -1,35 +1,31 @@
-<div class="userInputContainer">
-    <label for="IDKlijent">ID:</label>
-    <input type="text" id="IDKlijent" name="IDKlijent">
+<div class="userInputContainer" *ngIf="klijent">
 
     <label for="jmbg">JMBG:</label>
-    <input type="text" id="jmbg" name="jmbg">
+    <input type="text" id="jmbg" [(ngModel)]="klijent.jmbg" name="jmbg">
 
     <label for="imePrezime">Ime i prezime:</label>
-    <input type="text" id="imePrezime" name="imePrezime">
+    <input type="text" id="imePrezime" [(ngModel)] = "klijent.imePrezime" name="imePrezime">
 
     <label for="brlk">Broj licne karte:</label>
-    <input type="text" id="brlk" name="brlk">
+    <input type="text" id="brlk" [(ngModel)]="klijent.brlk" name="brlk">
 
     <label for="datumRodjenja">Datum rodjenja:</label>
-    <input type="text" id="datumRodjenja" name="datumRodjenja">
+    <input type="text" id="datumRodjenja" [(ngModel)]="klijent.datumRodj" name="datumRodjenja">
 
     <label for="email">E-mail:</label>
-    <input type="text" id="email" name="email">
+    <input type="text" id="email" [(ngModel)]="klijent.email" name="email">
 
     <label for="drzavljanstvo">Drzavljanstvo:</label>
-    <input type="text" id="drzavljanstvo" name="drzavljanstvo">
+    <input type="text" id="drzavljanstvo" [(ngModel)]="klijent.drzavljanstvo" name="drzavljanstvo">
 
     <label for="adresa">Adresa:</label>
-    <input type="text" id="adresa" name="adresa">
+    <input type="text" id="adresa" [(ngModel)]="klijent.adresa" name="adresa">
 
 </div>
 
  <h2>Rad sa racunima</h2>
 
 <div class="racuni">
-   
-
     <label for="brojRacuna">Broj racuna:</label>
     <input type="text" id="brojRacuna" name="brojRacuna">
 
@@ -41,8 +37,15 @@
 
     <label for="tipRacuna">Tip racuna:</label>
     <select name="tipRacuna" id="tipRacuna">
-
+        <option>Devizni</option>
+        <option>Tekuci</option>
+        <option>Dinarski</option>
+        <option>Stedni</option>
     </select>
+
+<div class="dugmici">
+    <button type="button" class = "dugme">Dodaj</button>
+</div>
 
     <table style="width:100%" class= "tabela">
         <tr>
@@ -50,17 +53,18 @@
           <th>Za platu</th>
           <th>Tip racuna</th>
         </tr>
+
+        <tr *ngFor = "let racun of racuni; let i = index">
+            <td>{{racun.brojRacuna}}</td>
+            <td>{{racun.zaPlatu}}</td>
+            <td>{{racun.tip}}</td>
+            <td><button (click) = "obrisiRacun(i)">Obrisi</button></td>
+            <td><button (click) = "openDialog(i)">Izmeni</button></td>
+        </tr>
     </table>
 
 </div>
 
-<div class="dugmici">
-    <button type="button" class = "dugme">Dodaj</button>
 
-    <button type="button" class = "dugme">Izmeni</button>
-
-    <button type="button" class = "dugme">Obrisi</button>
-
-</div>
 
 <button type="button" class = "dugmeSacuvaj">Sacuvaj klijenta</button>

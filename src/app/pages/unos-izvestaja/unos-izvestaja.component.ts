@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { MetodeAPIService } from 'src/app/metode-api.service';
+
 
 
 
@@ -13,26 +15,24 @@ export class UnosIzvestajaComponent implements OnInit {
   checkoutForm;
   izvestaji;
   klijenti;
-  constructor(
-    private http:HttpClient
+    constructor(
+    private http:HttpClient,
+    private metodAPI: MetodeAPIService,
      ) { }
 
-  async getIzvestaji() {
-      // this.izvestaji = await this.http.get("assets/json/Izvestaji.json").toPromise();
-      // console.log("Izvestaji",this.izvestaji);
-
-      this.http.get("assets/json/Izvestaji.json").toPromise().then((data)=>{
-        this.izvestaji=data;
-        console.log("Izvestaji",this.izvestaji);
-      }); 
+  uzmiIzvestaje(){
+    this.metodAPI.getIzvestaji().subscribe((izvestaji) => 
+    {
+      this.izvestaji = izvestaji;
+    });
   }
-  async getKlijenti() {
-    this.http.get("assets/json/klijentiIzvestaja.json").toPromise().then((data)=>{
-      this.klijenti=data;
-      console.log("Klijenti",this.klijenti);
-    }); 
-}
- 
+  uzmiKlijente(){
+    this.metodAPI.getKlijenti().subscribe((data) => 
+    {
+      this.klijenti = data; 
+      console.log(data);
+    });
+  }
 
   ngOnInit(){
     

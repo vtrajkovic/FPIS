@@ -4,7 +4,7 @@
     <label for="kriterijumPretrageKlijenata">Kriterijum za pretragu klijenata:</label>
     <input type="text" id="kriterijumPretrageKlijenata" name="kriterijumPretrageKlijenata">
 
-    <button type="button" class = "dugme" (click) = "getKlijentiFizicko()">Pretrazi</button>
+    <button type="button" class = "dugme" (click) = "uzmiKlijenteFizicko()">Pretrazi</button>
 </div>
 
 
@@ -27,14 +27,16 @@
             <td>{{klijent.brlk}}</td>
             <td>{{klijent.email}}</td>
             <td>{{klijent.adresa}}</td>
-        </tr>
-    </table>
+            <td><button (click)="obrisiKlijenta(i)">Obrisi</button></td>
+            <td><button [routerLink]="'/unos-klijenta/'+klijent.id">Izmeni</button></td>
+        </tr>    
 
+    </table>
 
 <div class="dugmici">
     <button type="button" class = "dugme">Izmeni</button>
 
-    <button type="button" class = "dugme" (click) = "remove()">Obrisi</button>
+    <button type="button" class = "dugme" >Obrisi</button>
 
     <button type="button" class = "dugme">Prikazi</button>
 </div>

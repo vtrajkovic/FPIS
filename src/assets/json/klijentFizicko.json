@@ -1,5 +1,6 @@
 [
     {
+        "id": 1,
         "jmbg": "12345678965",
         "imePrezime": "Nikola Rokvic",
         "datumRodj": "15.04.1994",
@@ -9,6 +10,7 @@
         "adresa": "Avalska 13"
     },
     {
+        "id": 2,
         "jmbg": "7849658321485",
         "imePrezime": "Tejlor Svift",
         "datumRodj": "08.06.1992",

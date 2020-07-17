@@ -7,13 +7,17 @@ import { UnosKlijentaComponent } from './pages/unos-klijenta/unos-klijenta.compo
 import { IzmenaKlijentaComponent } from './pages/izmena-klijenta/izmena-klijenta.component';
 import { IzmenaIzvestajaComponent } from './pages/izmena-izvestaja/izmena-izvestaja.component';
 import { PretragaKlijentaComponent } from './pages/pretraga-klijenta/pretraga-klijenta.component';
-//import { ReactiveFormsModule } from '@angular/forms';
-//import { EditorTekstaComponent } from './editor-teksta/editor-teksta.component';
 
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormsModule } from '@angular/forms';
 import { UnosIzvestajaComponent } from './pages/unos-izvestaja/unos-izvestaja.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { IzmenaRacunaComponent } from './pages/izmena-racuna/izmena-racuna.component';
+import { DialogRacunComponent } from './pages/dialog-racun/dialog-racun.component';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 @NgModule({
   declarations: [
@@ -24,15 +28,26 @@ import { HttpClientModule } from '@angular/common/http';
     IzmenaIzvestajaComponent,
     PretragaKlijentaComponent,
     HomeComponent,
+    IzmenaRacunaComponent,
+    DialogRacunComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     //ReactiveFormsModule,
-    HttpClientModule
-    
+    HttpClientModule,
+    FormsModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
   ],
-  providers: [FormBuilder],
+  providers: [
+    FormBuilder,
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

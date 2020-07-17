@@ -1,0 +1,26 @@
+<mat-dialog-content>
+  
+    <label for="brojRacuna">Broj racuna:</label>
+    <input type="text" id="brojRacuna" name="brojRacuna" [(ngModel)]="racun.brojRacuna">
+
+    <label for="zaPlatu">Za platu:</label>
+    <select name="zaPlatu" id="zaPlatu" [(ngModel)]="racun.zaPlatu"> 
+        <option value='da' >Da</option>
+        <option value='ne' >Ne</option>
+    </select>
+
+    <label for="tipRacuna">Tip racuna:</label>
+    <select name="tipRacuna" id="tipRacuna" [(ngModel)]="racun.tip">
+        <option value='devizni'>Devizni</option>
+        <option value='tekuci'>Tekuci</option>
+        <option value='dinarski'>Dinarski</option>
+        <option value='stedni'>Stedni</option>
+    </select>
+    <!-- <mat-form-field>
+        <input matInput placeholder="Broj racuna:" formControlName="brojRacuna">
+    </mat-form-field> -->
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button (click) = "izmeni()">Izmeni</button>
+</mat-dialog-actions>

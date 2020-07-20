@@ -16,6 +16,7 @@ import { IzmenaRacunaComponent } from './pages/izmena-racuna/izmena-racuna.compo
 import { DialogRacunComponent } from './pages/dialog-racun/dialog-racun.component';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogIzvestajComponent } from './pages/dialog-izvestaj/dialog-izvestaj.component';
 
 
 
@@ -29,7 +30,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PretragaKlijentaComponent,
     HomeComponent,
     IzmenaRacunaComponent,
-    DialogRacunComponent
+    DialogRacunComponent,
+    DialogIzvestajComponent,
+
 
   ],
   imports: [

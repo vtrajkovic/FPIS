@@ -19,6 +19,8 @@ const routes: Routes = [
   { path: 'pretraga-klijenta', component: AppComponent },
   { path: '', component: HomeComponent },
   { path: 'izmena-racuna/:brojRacuna', component: IzmenaRacunaComponent},
+  { path: 'unos-klijenta', component: UnosKlijentaComponent },
+ 
 ];
 
 @NgModule({

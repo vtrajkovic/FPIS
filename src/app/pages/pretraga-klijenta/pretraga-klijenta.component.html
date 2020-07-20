@@ -2,7 +2,7 @@
 
 <div class="kriterijumContainer">
     <label for="kriterijumPretrageKlijenata">Kriterijum za pretragu klijenata:</label>
-    <input type="text" id="kriterijumPretrageKlijenata" name="kriterijumPretrageKlijenata">
+    <input type="text" id="kriterijumPretrageKlijenata" name="kriterijumPretrageKlijenata" [(ngModel)] = "kriterijum">
 
     <button type="button" class = "dugme" (click) = "uzmiKlijenteFizicko()">Pretrazi</button>
 </div>

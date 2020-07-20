@@ -1,6 +1,6 @@
 <div class="kriterijumContainer">
   <label for="kriterijumPretrageIzvestaja">Kriterijum za pretragu izvestaja:</label>
-  <input type="text" id="kriterijumPretrageIzvestaja" name="kriterijumPretrageIzvestaja">
+  <input type="text" id="kriterijumPretrageIzvestaja" name="kriterijumPretrageIzvestaja" [(ngModel)]="kriterijum">
 
   <button type="button" class = "dugme" (click) = "uzmiIzvestaje()">Pronadji</button>
   
@@ -14,29 +14,30 @@
       <th>Klijent</th>
       <th>Radni nalog</th>
     </tr>
-    <tr *ngFor = "let izvestaj of izvestaji">
+    <tr *ngFor = "let izvestaj of izvestaji; let i = index">
       <td>{{izvestaj.id}}</td>
       <td>{{izvestaj.datum}}</td>
       <td>{{izvestaj.klijent}}</td>
       <td>{{izvestaj.nalogid}}</td>
+      <td><button (click) = "openDialog(i)">Izmeni</button></td>
     </tr>
 </table>
 
-<div class = "clientInputContainter">
+<div class = "clientInputContainter" *ngIf = "izvestaj">
 
 <label for="IDIzvestaj">ID Izvestaja:</label>
-<input type="text" id="IDIzvestaj" name="IDIzvestaj">
+<input type="text" id="IDIzvestaj" name="IDIzvestaj" [(ngModel)] = "izvestaj.id">
 
 <label for="datum">Datum:</label>
-<input type="date" id="datum" name="datum">
+<input type="date" id="datum" name="datum" [(ngModel)] = "izvestaj.datum">
 
 <label for="nalozi">Radni nalog:</label>
-<select name="nalozi" id="nalozi">
+<select name="nalozi" id="nalozi" [(ngModel)] = "izvestaj.nalogid">
 
 </select>
 
 <label for="kriterijumPretrageKlijenta" class="kriterijumLabel">Kriterijum za pretragu klijenta:</label>
-<input type="text" id="kriterijumPretrageKlijenta" name="kriterijumPretrageKlijenta">
+<input type="text" id="kriterijumPretrageKlijenta" name="kriterijumPretrageKlijenta" [(ngModel)]="kriterijumKlijenti">
 
 <button type="button" class = "dugme" (click) = "uzmiKlijente()">Pronadji</button>
 
@@ -57,6 +58,10 @@
 </table>
 
 <button type="button" class = "dugmeSacuvaj">Sacuvaj izvestaj</button>
+
+<!-- <button type="button" class = "dugmeSacuvaj">Dodaj novi izvestaj</button>
+<button type="button" class = "dugmeSacuvaj">Izmeni izvestaj</button> -->
+
 
 
 

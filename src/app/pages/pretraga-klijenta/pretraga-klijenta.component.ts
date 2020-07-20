@@ -6,32 +6,31 @@ import { MetodeAPIService } from 'src/app/metode-api.service';
 @Component({
   selector: 'app-pretraga-klijenta',
   templateUrl: './pretraga-klijenta.component.html',
-  styleUrls: ['./pretraga-klijenta.component.css']
+  styleUrls: ['./pretraga-klijenta.component.css'],
 })
 export class PretragaKlijentaComponent implements OnInit {
-klijenti;
-private selectedRowIndex: number;
-private selectedRow;
-  constructor(
-    private http: HttpClient,
-    private metodaAPI: MetodeAPIService,
-  ) { }
+  klijenti;
+  kriterijum: string = '';
+  private selectedRowIndex: number;
+  private selectedRow;
+  constructor(private http: HttpClient, private metodaAPI: MetodeAPIService) {}
 
-  uzmiKlijenteFizicko(){
-    this.metodaAPI.getKlijentiFizicko().subscribe((data) => 
-    {
-      this.klijenti = data;
+  uzmiKlijenteFizicko() {
+    this.metodaAPI.getKlijentiFizicko().subscribe((klijenti:Array<any>) => {
+      console.log("Klijenti:", klijenti);
+      this.klijenti = klijenti.filter((i)=> i.imePrezime.toLowerCase().indexOf(this.kriterijum.toLowerCase())>=0);
     });
   }
-  ngOnInit(){
-  }
 
-  selectRow(index){
+
+  
+  ngOnInit() {}
+
+  selectRow(index) {
     this.selectedRowIndex = index;
   }
 
   obrisiKlijenta(index) {
-    this.klijenti.splice(index,1);
+    this.klijenti.splice(index, 1);
   }
-
 }

@@ -1,0 +1,17 @@
+<mat-dialog-content>
+  
+    <label for="datum">Datum:</label>
+    <input type="date" id="datum" name="datum" [(ngModel)]="izvestaj.datum">
+
+    <label for="radniNalog">Radni nalog:</label>
+    <select name="radniNalog" id="nalogid" [(ngModel)]="izvestaj.nalogid"> 
+        
+    </select>
+    <!-- <mat-form-field>
+        <input matInput placeholder="Broj racuna:" formControlName="brojRacuna">
+    </mat-form-field> -->
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button (click) = "izmeni()">Izmeni</button>
+</mat-dialog-actions>

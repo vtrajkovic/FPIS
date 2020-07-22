@@ -8,7 +8,7 @@ import { IzmenaKlijentaComponent } from './pages/izmena-klijenta/izmena-klijenta
 import { IzmenaIzvestajaComponent } from './pages/izmena-izvestaja/izmena-izvestaja.component';
 import { PretragaKlijentaComponent } from './pages/pretraga-klijenta/pretraga-klijenta.component';
 
-import { FormBuilder, FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UnosIzvestajaComponent } from './pages/unos-izvestaja/unos-izvestaja.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -38,7 +38,7 @@ import { DialogIzvestajComponent } from './pages/dialog-izvestaj/dialog-izvestaj
   imports: [
     BrowserModule,
     AppRoutingModule,
-    //ReactiveFormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
     MatDialogModule,

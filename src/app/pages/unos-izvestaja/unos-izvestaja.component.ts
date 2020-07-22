@@ -6,6 +6,7 @@ import { mainModule } from 'process';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { DialogRacunComponent } from '../dialog-racun/dialog-racun.component';
 import { DialogIzvestajComponent } from '../dialog-izvestaj/dialog-izvestaj.component';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-unos-izvestaja',
@@ -16,15 +17,25 @@ export class UnosIzvestajaComponent implements OnInit {
   public kriterijum: string = '';
   public kriterijumKlijenti: string = '';
   checkoutForm;
-  izvestaji;
-  klijenti;
-  izvestaj = { id: 0, datum: null, klijent: '', nalogid: 0 };
+  izvestaji = [];
+  klijenti = [];
+  izvestaj = { id: null, datum: null, klijent: null, nalogid: null };
+  selectedRowIndex: number;
+  selectedRowNaziv:string= '';
+  
   constructor
   (private http: HttpClient, 
     private metodAPI: MetodeAPIService,
     private dialog: MatDialog,
-    public dialogRef: MatDialogRef<DialogIzvestajComponent>
+    public dialogRef: MatDialogRef<DialogIzvestajComponent>, 
+    private fb:FormBuilder,
     ) {}
+
+    izvestajForma = this.fb.group({
+      datum: new FormControl(this.izvestaj.datum, Validators.required),
+      klijent: new FormControl(this.izvestaj.klijent, Validators.required),
+      nalogid: new FormControl(this.izvestaj.nalogid, Validators.required),
+    });
 
   uzmiIzvestaje() {
     this.metodAPI.getIzvestaji().subscribe((izvestaji:Array<any>) => {
@@ -34,7 +45,7 @@ export class UnosIzvestajaComponent implements OnInit {
   }
 
   uzmiIzvestajeKriterijum(imeKlijenta) {
-    this.metodAPI.getIzvestaji().subscribe((izvestaji) => {
+    this.metodAPI.getIzvestaji().subscribe((izvestaji: Array<any>) => {
       this.izvestaji = izvestaji;
     });
   }
@@ -69,5 +80,21 @@ openDialog(index) {
     console.log('lkjfdsha', value)
     this.izvestaji[index] = value;
   });
+}
+selectedRow(index){
+  this.selectedRowIndex = index;
+  this.izvestajForma.patchValue({
+    klijent: this.klijenti[index].naziv,
+  })
+  console.log("selected row data", this.selectedRowNaziv);
+  console.log("Ime klijenta", this.izvestaj.klijent);
+  console.log("Vrednosti forme:", this.izvestajForma.value);
+  
+}
+
+onSubmitIzvestaj(){
+  console.log(this.izvestajForma.value);
+  //this.izvestajForma.setValue([this.izvestaj.datum, this.izvestaj.klijent, this.izvestaj.nalogid]);
+  this.izvestaji.push(JSON.parse(JSON.stringify(this.izvestajForma.value)));
 }
 }

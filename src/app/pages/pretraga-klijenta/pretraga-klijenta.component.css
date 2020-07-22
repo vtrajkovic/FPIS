@@ -1,27 +1,34 @@
-.tabela, th, td{
-    border: 1px solid black;
+.tabela,
+th,
+td {
+  border: 1px solid black;
 }
 
 .dugme {
-    background-color: #149bc4;
-    border: none;
-    color: white;
-    padding: 4px 40px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-bottom: 4px;
-    margin-left: 20px;
-    border-radius: 8px;
-  }
+  background-color: #149bc4;
+  border: none;
+  color: white;
+  padding: 4px 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-bottom: 4px;
+  margin-top: 20px;
+  margin-left: 20px;
+  border-radius: 8px;
+}
 
-  .tabela{
-    margin-bottom: 20px;
-    margin-left: 20px;
-  }
+.tabela {
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
 
-  .kriterijumContainer{
-    margin-left: 20px;
-    margin-bottom: 15px;
-  }
+.kriterijumContainer {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+.kriterijumContainer {
+  margin-left: 20pt;
+}

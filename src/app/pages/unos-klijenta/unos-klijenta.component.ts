@@ -8,6 +8,12 @@ import {
   MatDialogRef,
 } from '@angular/material/dialog';
 import { DialogRacunComponent } from '../dialog-racun/dialog-racun.component';
+import {
+  FormControl,
+  FormBuilder,
+  Validator,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-unos-klijenta',
@@ -15,38 +21,55 @@ import { DialogRacunComponent } from '../dialog-racun/dialog-racun.component';
   styleUrls: ['./unos-klijenta.component.css'],
 })
 export class UnosKlijentaComponent implements OnInit {
-  racuni;
+  racuni = [];
   racun = {
-    "brojRacuna": null,
-        "zaPlatu": null,
-        "tip": null
+    brojRacuna: null,
+    zaPlatu: null,
+    tip: null,
   };
   id: number;
-  klijenti;
-  klijent;
+  klijenti = [];
+  klijent = {
+    id: null,
+    jmbg: null,
+    imePrezime: null,
+    datumRodj: null,
+    drzavljanstvo: null,
+    brlk: null,
+    email: null,
+    adresa: null
+  };
   editableIndex;
   selectedRow: number;
+  klijentForma = this.fb.group({
+    jmbg: new FormControl(this.klijent.jmbg, Validators.required),
+    imePrezime: new FormControl(this.klijent.imePrezime, Validators.required),
+    datumRodj: new FormControl(this.klijent.datumRodj, Validators.required),
+    drzavljanstvo: new FormControl(this.klijent.drzavljanstvo),
+    brlk: new FormControl(this.klijent.brlk, Validators.required),
+    email: new FormControl(this.klijent.email),
+    adresa: new FormControl(this.klijent.adresa, Validators.required),
+  });
 
+  racunForma = this.fb.group({
+    brojRacuna: new FormControl(this.racun.brojRacuna, Validators.required),
+    zaPlatu: new FormControl(this.racun.zaPlatu, Validators.required),
+    tip: new FormControl(this.racun.zaPlatu, Validators.required),
+  });
   constructor(
     private http: HttpClient,
     private metodeAPI: MetodeAPIService,
     private route: ActivatedRoute,
     // private routerService: RouterService,
     private dialog: MatDialog,
-    public dialogRef: MatDialogRef<DialogRacunComponent>
+    public dialogRef: MatDialogRef<DialogRacunComponent>,
+    private fb: FormBuilder
   ) {}
 
   obrisiRacun(index) {
     this.racuni.splice(index, 1);
   }
-  makeEdiatble(index) {
-    this.editableIndex = index;
-  }
-  isEditable(index) {
-    console.log('is editable');
-    return true;
-    return index === this.editableIndex;
-  }
+
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
       this.id = Number(params.get('klijentId'));
@@ -77,8 +100,12 @@ export class UnosKlijentaComponent implements OnInit {
   }
 
   dodajRacun() {
-    this.racuni.push(this.racun);
+    this.onSubmitRacun();
+  }
 
+  onSubmitRacun(){
+    console.log(this.racunForma.value)
+    this.racuni.push(JSON.parse(JSON.stringify(this.racunForma.value)));
   }
   selectRow(index) {
     console.log(index);
@@ -103,8 +130,15 @@ export class UnosKlijentaComponent implements OnInit {
       this.racuni[index] = value;
     });
   }
+  dodajKlijenta() {
+    this.onSubmitKlijent();
+  }
 
-  sacuvaj(){
-    
+  onSubmitKlijent(){
+    console.log(this.klijentForma.value);
+    this.klijenti.push(JSON.parse(JSON.stringify(this.klijentForma.value)));
+  }
+  validacijaForme(){
+
   }
 }

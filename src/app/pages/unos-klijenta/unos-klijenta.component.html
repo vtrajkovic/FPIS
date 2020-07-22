@@ -1,70 +1,114 @@
-<div class="userInputContainer" *ngIf="klijent">
-
+<form [formGroup]="klijentForma" (ngSubmit) = "onSubmitKlijent()">
+  <div class="userInputContainer" *ngIf="klijent">
     <label for="jmbg">JMBG:</label>
-    <input type="text" id="jmbg" [(ngModel)]="klijent.jmbg" name="jmbg">
+    <input
+      type="text"
+      id="jmbg"
+      name="jmbg"
+      formControlName="jmbg"
+    />
 
     <label for="imePrezime">Ime i prezime:</label>
-    <input type="text" id="imePrezime" [(ngModel)] = "klijent.imePrezime" name="imePrezime">
+    <input
+      type="text"
+      id="imePrezime"
+      name="imePrezime"
+      formControlName="imePrezime"
+    />
 
     <label for="brlk">Broj licne karte:</label>
-    <input type="text" id="brlk" [(ngModel)]="klijent.brlk" name="brlk">
+    <input
+      type="text"
+      id="brlk"
+      name="brlk"
+      formControlName="brlk"
+    />
 
     <label for="datumRodjenja">Datum rodjenja:</label>
-    <input type="text" id="datumRodjenja" [(ngModel)]="klijent.datumRodj" name="datumRodjenja">
+    <input
+      type="text"
+      id="datumRodjenja"
+      name="datumRodjenja"
+      formControlName="datumRodj"
+    />
 
     <label for="email">E-mail:</label>
-    <input type="text" id="email" [(ngModel)]="klijent.email" name="email">
+    <input
+      type="text"
+      id="email"
+      name="email"
+      formControlName="email"
+    />
 
     <label for="drzavljanstvo">Drzavljanstvo:</label>
-    <input type="text" id="drzavljanstvo" [(ngModel)]="klijent.drzavljanstvo" name="drzavljanstvo">
+    <input
+      type="text"
+      id="drzavljanstvo"
+      name="drzavljanstvo"
+      formControlName="drzavljanstvo"
+    />
 
     <label for="adresa">Adresa:</label>
-    <input type="text" id="adresa" [(ngModel)]="klijent.adresa" name="adresa">
+    <input
+      type="text"
+      id="adresa"
+      name="adresa"
+      formControlName="adresa"
+    />
+    {{klijentForma.valid}}
+    <!-- <button type = "submit" class="dugme" [disabled] = "!klijentForma.valid">Dodaj klijenta</button> -->
+  </div>
+</form>
 
-</div>
+<form [formGroup] = "racunForma" (ngSubmit) = "onSubmitRacun()">
+  <h2>Rad sa racunima</h2>
 
- <h2>Rad sa racunima</h2>
-
-<div class="racuni">
+  <div class="racuni">
     <label for="brojRacuna">Broj racuna:</label>
-    <input type="text" id="brojRacuna" name="brojRacuna" [(ngModel)] = "racun.brojRacuna">
+    <input
+      type="text"
+      id="brojRacuna"
+      name="brojRacuna"
+      formControlName="brojRacuna"
+    />
 
     <label for="zaPlatu">Za platu:</label>
-    <select name="zaPlatu" id="zaPlatu" [(ngModel)] = "racun.zaPlatu">
-        <option value="da">Da</option>
-        <option value="ne">Ne</option>
+    <select name="zaPlatu" id="zaPlatu" formControlName="zaPlatu">
+      <option value="da">Da</option>
+      <option value="ne">Ne</option>
     </select>
 
     <label for="tipRacuna">Tip racuna:</label>
-    <select name="tipRacuna" id="tipRacuna" [(ngModel)] = "racun.tip">
-        <option value="devizni">Devizni</option>
-        <option value="tekuci">Tekuci</option>
-        <option  value="dinarski">Dinarski</option>
-        <option value="stedni">Stedni</option>
+    <select name="tipRacuna" id="tipRacuna" formControlName="tip">
+      <option value="devizni">Devizni</option>
+      <option value="tekuci">Tekuci</option>
+      <option value="dinarski">Dinarski</option>
+      <option value="stedni">Stedni</option>
     </select>
 
-<div class="dugmici">
-    <button type="button" class = "dugme" (click)="dodajRacun()">Dodaj</button>
-</div>
+    <div class="dugmici">
+      <button type="submit" class="dugme" [disabled] = "!racunForma.valid">Dodaj</button>
+      {{racunForma.valid}}
+    </div>
+    
 
-    <table style="width:100%" class= "tabela">
-        <tr>
-          <th>Broj racuna</th>
-          <th>Za platu</th>
-          <th>Tip racuna</th>
-        </tr>
+    <table style="width: 100%;" class="tabela">
+      <tr>
+        <th>Broj racuna</th>
+        <th>Za platu</th>
+        <th>Tip racuna</th>
+      </tr>
 
-        <tr *ngFor = "let racun of racuni; let i = index">
-            <td>{{racun.brojRacuna}}</td>
-            <td>{{racun.zaPlatu}}</td>
-            <td>{{racun.tip}}</td>
-            <td><button (click) = "obrisiRacun(i)">Obrisi</button></td>
-            <td><button (click) = "openDialog(i)">Izmeni</button></td>
-        </tr>
+      <tr *ngFor="let racun of racuni; let i = index">
+        <td>{{ racun.brojRacuna }}</td>
+        <td>{{ racun.zaPlatu }}</td>
+        <td>{{ racun.tip }}</td>
+        <td><button (click)="obrisiRacun(i)">Obrisi</button></td>
+        <td><button (click)="openDialog(i)">Izmeni</button></td>
+      </tr>
     </table>
-
-</div>
-
-
-
-<button type="button" class = "dugmeSacuvaj">Sacuvaj klijenta</button>
+  </div>
+</form>
+<button type="button" class="dugmeSacuvaj"  [disabled] = "!klijentForma.valid" (click)="dodajKlijenta()">
+  Sacuvaj klijenta
+</button>

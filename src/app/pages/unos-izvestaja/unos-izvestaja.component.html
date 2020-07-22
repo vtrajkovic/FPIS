@@ -23,21 +23,23 @@
     </tr>
 </table>
 
+<form [formGroup]="izvestajForma" (ngSubmit) = "onSubmitIzvestaj()">
 <div class = "clientInputContainter" *ngIf = "izvestaj">
 
 <label for="IDIzvestaj">ID Izvestaja:</label>
-<input type="text" id="IDIzvestaj" name="IDIzvestaj" [(ngModel)] = "izvestaj.id">
+<input type="text" id="IDIzvestaj" name="IDIzvestaj" readonly>
 
 <label for="datum">Datum:</label>
-<input type="date" id="datum" name="datum" [(ngModel)] = "izvestaj.datum">
+<input type="date" id="datum" name="datum" formControlName="datum">
 
 <label for="nalozi">Radni nalog:</label>
-<select name="nalozi" id="nalozi" [(ngModel)] = "izvestaj.nalogid">
+<input name="nalozi" id="nalozi" formControlName="nalogid">
 
-</select>
+<label for="klijentIme">Klijent:</label>
+<input name="klijentIme" id="klijentIme"  formControlName="klijent" readonly>
 
 <label for="kriterijumPretrageKlijenta" class="kriterijumLabel">Kriterijum za pretragu klijenta:</label>
-<input type="text" id="kriterijumPretrageKlijenta" name="kriterijumPretrageKlijenta" [(ngModel)]="kriterijumKlijenti">
+<input type="text" id="kriterijumPretrageKlijenta" name="kriterijumPretrageKlijenta" [(ngModel)]="kriterijumKlijenti" [ngModelOptions]="{standalone: true}">
 
 <button type="button" class = "dugme" (click) = "uzmiKlijente()">Pronadji</button>
 
@@ -49,7 +51,7 @@
       <th>E-mail</th>
     </tr>
 
-    <tr *ngFor = "let klijent of klijenti">
+    <tr *ngFor = "let klijent of klijenti; let i = index" (click) = "selectedRow(i)">
       <td>{{klijent.id}}</td>
       <td>{{klijent.naziv}}</td>
       <td>{{klijent.email}}</td>
@@ -57,8 +59,8 @@
 
 </table>
 
-<button type="button" class = "dugmeSacuvaj">Sacuvaj izvestaj</button>
-
+<button type="submit" class = "dugmeSacuvaj" [disabled] = "!izvestajForma.valid" >Sacuvaj izvestaj</button> {{izvestajForma.valid}}
+</form>
 <!-- <button type="button" class = "dugmeSacuvaj">Dodaj novi izvestaj</button>
 <button type="button" class = "dugmeSacuvaj">Izmeni izvestaj</button> -->
 

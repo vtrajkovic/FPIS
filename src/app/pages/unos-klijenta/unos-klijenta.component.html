@@ -60,7 +60,7 @@
   </div>
 </form>
 
-<form [formGroup] = "racunForma" (ngSubmit) = "onSubmitRacun()">
+<form [formGroup] = "racunForma" (ngSubmit) = "dodajRacun()">
   <h2>Rad sa racunima</h2>
 
   <div class="racuni">
@@ -103,8 +103,8 @@
         <td>{{ racun.brojRacuna }}</td>
         <td>{{ racun.zaPlatu }}</td>
         <td>{{ racun.tip }}</td>
-        <td><button (click)="obrisiRacun(i)">Obrisi</button></td>
-        <td><button (click)="openDialog(i)">Izmeni</button></td>
+        <td><button type = "button"(click)="obrisiRacun(i)">Obrisi</button></td>
+        <td><button type = "button" (click)="openDialog(i)">Izmeni</button></td>
       </tr>
     </table>
   </div>

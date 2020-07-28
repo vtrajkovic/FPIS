@@ -2,25 +2,33 @@
     {
         "id":1,
         "datum": "2020-01-15",
+        "nalogid": 123,
         "klijent": "Pera Peric",
-        "nalogid": 123 
+        "klijentid": 13
+        
     },
     {
         "id":2,
         "datum": "2020-01-16",
+        "nalogid": 124,
         "klijent": "Vladimir Trajkovic",
-        "nalogid": 124
+        "klijentid": 12
+        
     },
     {
         "id":3,
         "datum": "2020-01-17",
+        "nalogid": 125,
         "klijent": "Damir Kerkez",
-        "nalogid": 125 
+        "klijentid": 12
+        
     },
     {
         "id":4,
         "datum": "2020-01-18",
+        "nalogid": 126,
         "klijent": "Jovan Radosavljevic",
-        "nalogid": 126 
+        "klijentid": 12
+        
     }
 ]

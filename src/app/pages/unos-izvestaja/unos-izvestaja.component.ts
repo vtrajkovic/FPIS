@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵConsole } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MetodeAPIService } from 'src/app/metode-api.service';
@@ -7,6 +7,8 @@ import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dial
 import { DialogRacunComponent } from '../dialog-racun/dialog-racun.component';
 import { DialogIzvestajComponent } from '../dialog-izvestaj/dialog-izvestaj.component';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { DialogVerifikacijaComponent } from '../dialog-verifikacija/dialog-verifikacija.component';
+import { error } from 'protractor';
 
 @Component({
   selector: 'app-unos-izvestaja',
@@ -19,7 +21,7 @@ export class UnosIzvestajaComponent implements OnInit {
   checkoutForm;
   izvestaji = [];
   klijenti = [];
-  izvestaj = { id: null, datum: null, klijent: null, nalogid: null };
+  izvestaj = { id: null, datum: null, klijent: null, klijentid: null, nalogid: null };
   selectedRowIndex: number;
   selectedRowNaziv:string= '';
   
@@ -28,6 +30,7 @@ export class UnosIzvestajaComponent implements OnInit {
     private metodAPI: MetodeAPIService,
     private dialog: MatDialog,
     public dialogRef: MatDialogRef<DialogIzvestajComponent>, 
+    public dialogRefVer: MatDialogRef<DialogVerifikacijaComponent>,
     private fb:FormBuilder,
     ) {}
 
@@ -77,8 +80,25 @@ openDialog(index) {
   this.dialogRef =  this.dialog.open(DialogIzvestajComponent, dialogConfig);
 
   this.dialogRef.afterClosed().subscribe(value => {
-    console.log('lkjfdsha', value)
+    console.log('lkjfdsha', value);  
     this.izvestaji[index] = value;
+    this.izmeniIzvestaj(this.izvestaji[index]);
+  });
+}
+
+openDialogVerification(index) {
+
+  const dialogConfig = new MatDialogConfig();
+  dialogConfig.disableClose = true;
+  dialogConfig.autoFocus = true;
+
+  this.dialogRefVer =  this.dialog.open(DialogVerifikacijaComponent, dialogConfig);
+
+  this.dialogRefVer.afterClosed().subscribe(value => {
+    if(value == "da"){
+      console.log("Vratilo se:",value)
+      this.obrisiIzvestaj(this.izvestaji[index]);
+    }
   });
 }
 selectedRow(index){
@@ -89,12 +109,32 @@ selectedRow(index){
   console.log("selected row data", this.selectedRowNaziv);
   console.log("Ime klijenta", this.izvestaj.klijent);
   console.log("Vrednosti forme:", this.izvestajForma.value);
+  console.log("Izvestaj:", this.izvestaj)
   
 }
 
 onSubmitIzvestaj(){
   console.log(this.izvestajForma.value);
-  //this.izvestajForma.setValue([this.izvestaj.datum, this.izvestaj.klijent, this.izvestaj.nalogid]);
   this.izvestaji.push(JSON.parse(JSON.stringify(this.izvestajForma.value)));
+}
+
+obrisiIzvestaj(izvestaj){
+  console.log("ID izvestaja za brisanje:",izvestaj.id)
+  this.metodAPI.deleteIzvestaj(izvestaj.id).subscribe((data) => {
+    console.log("data", data);
+  }, (error) => {
+    console.log("error", error);
+  }
+  );
+}
+
+izmeniIzvestaj(izvestaj){
+  console.log("Izvestaj za izmenu", izvestaj)
+  this.metodAPI.updateIzvestaj(izvestaj).subscribe((data) =>{
+    console.log("data", data);
+  },(error) =>{
+    console.log("greska", error)
+  }
+  );
 }
 }

@@ -17,6 +17,7 @@ import { DialogRacunComponent } from './pages/dialog-racun/dialog-racun.componen
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogIzvestajComponent } from './pages/dialog-izvestaj/dialog-izvestaj.component';
+import { DialogVerifikacijaComponent } from './pages/dialog-verifikacija/dialog-verifikacija.component';
 
 
 
@@ -32,6 +33,7 @@ import { DialogIzvestajComponent } from './pages/dialog-izvestaj/dialog-izvestaj
     IzmenaRacunaComponent,
     DialogRacunComponent,
     DialogIzvestajComponent,
+    DialogVerifikacijaComponent,
 
 
   ],

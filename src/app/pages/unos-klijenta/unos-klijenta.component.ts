@@ -37,7 +37,8 @@ export class UnosKlijentaComponent implements OnInit {
     drzavljanstvo: null,
     brlk: null,
     email: null,
-    adresa: null
+    adresa: null,
+    listaRacuna : [],
   };
   editableIndex;
   selectedRow: number;
@@ -78,12 +79,19 @@ export class UnosKlijentaComponent implements OnInit {
         this.metodeAPI.getKlijentiFizicko().subscribe((data: Array<any>) => {
           console.log(data);
           this.klijent = data.find((x) => x.id == this.id);
+          this.racuni = this.klijent.listaRacuna;
           console.log(this.klijent);
+          this.klijentForma.patchValue({
+            jmbg: this.klijent.jmbg,
+            imePrezime: this.klijent.imePrezime,
+            datumRodj: this.klijent.datumRodj,
+            drzavljanstvo: this.klijent.drzavljanstvo,
+            brlk: this.klijent.brlk,
+            email: this.klijent.email,
+            adresa: this.klijent.adresa,
+          });
         });
 
-        this.metodeAPI.getRacuni().subscribe((data: Array<any>) => {
-          this.racuni = data;
-        });
       } else {
         this.klijent = {
           id: null,
@@ -94,6 +102,7 @@ export class UnosKlijentaComponent implements OnInit {
           brlk: null,
           email: null,
           adresa: null,
+          listaRacuna: [],
         };
       }
     });
@@ -103,8 +112,8 @@ export class UnosKlijentaComponent implements OnInit {
     this.onSubmitRacun();
   }
 
-  onSubmitRacun(){
-    console.log(this.racunForma.value)
+  onSubmitRacun() {
+    console.log(this.racunForma.value);
     this.racuni.push(JSON.parse(JSON.stringify(this.racunForma.value)));
   }
   selectRow(index) {
@@ -121,24 +130,21 @@ export class UnosKlijentaComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.data = this.racuni[index];
+    dialogConfig.data = this.klijent.listaRacuna[index];
 
     this.dialogRef = this.dialog.open(DialogRacunComponent, dialogConfig);
 
     this.dialogRef.afterClosed().subscribe((value) => {
       console.log('lkjfdsha', value);
-      this.racuni[index] = value;
+      this.klijent.listaRacuna[index] = value;
     });
   }
   dodajKlijenta() {
     this.onSubmitKlijent();
   }
 
-  onSubmitKlijent(){
+  onSubmitKlijent() {
     console.log(this.klijentForma.value);
     this.klijenti.push(JSON.parse(JSON.stringify(this.klijentForma.value)));
-  }
-  validacijaForme(){
-
   }
 }

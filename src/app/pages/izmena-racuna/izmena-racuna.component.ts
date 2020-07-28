@@ -19,22 +19,11 @@ export class IzmenaRacunaComponent implements OnInit {
    // private routerService: RouterService,
     private dialog: MatDialog,
   ) { }
-
-//   openDialog() {
-
-//     const dialogConfig = new MatDialogConfig();
-
-//     dialogConfig.disableClose = true;
-//     dialogConfig.autoFocus = true;
-
-//     this.dialog.open(DialogRacunComponent, dialogConfig);
-// }
   ngOnInit(): void {
 
     this.route.paramMap.subscribe(params => {
       this.brojRacuna = params.get('brojRacuna');
       if(this.brojRacuna){
-        //console.log('Broj Racuna:'+this.brojRacuna)
         this.metodeAPI.getRacuni().subscribe((data: Array<any>) => {
           console.log(data)
           this.racun = data.find(x => x.brojRacuna == this.brojRacuna);

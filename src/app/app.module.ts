@@ -20,7 +20,6 @@ import { DialogIzvestajComponent } from './pages/dialog-izvestaj/dialog-izvestaj
 import { DialogVerifikacijaComponent } from './pages/dialog-verifikacija/dialog-verifikacija.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

@@ -3,6 +3,9 @@ th,
 td {
   border: 1px solid black;
 }
+.tabela,th{
+  text-align: center;
+}
 
 .dugme {
   background-color: #149bc4;
@@ -22,6 +25,7 @@ td {
 .tabela {
   margin-bottom: 20px;
   margin-left: 20px;
+  width: calc(100% - 40px);
 }
 
 .kriterijumContainer {

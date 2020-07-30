@@ -22,6 +22,9 @@ h2{
 .tabela, th, td{
     border: 1px solid black;
 }
+.tabela,th{
+    text-align: center;
+  }
 
 .dugme {
     background-color: #149bc4;
@@ -40,8 +43,11 @@ h2{
 .racuni>table{
    margin-left: 20pt;
    margin-bottom: 14pt;
+   width: calc(100% - 40px);
 }
-
+.tabela,th{
+    text-align: center;
+  }
 
 .racuni{
     margin-top: 20pt;

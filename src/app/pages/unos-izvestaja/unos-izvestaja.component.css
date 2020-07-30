@@ -1,7 +1,9 @@
 .tabela, th, td{
     border: 1px solid black;
 }
-
+.tabela,th{
+  text-align: center;
+}
 .dugme {
     background-color: #149bc4;
     border: none;
@@ -11,12 +13,13 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 12px;
-    margin-left: 20px;
+    /* margin: 12px; */
+    /* margin-left: 20px; */
     border-radius: 8px;
   }
 
   .tabela{
+    width: calc(100% - 40px);
     margin-bottom: 20px;
     margin-left: 20px;
     margin-right: 20px;
@@ -26,15 +29,15 @@
     margin: 10px 20px 10px 20px;
   }
   .clientInputContainter>input{
-        margin-right: 20px;
+       margin-right: 20px;
   }
   .clientInputContainter>select{
       margin-right: 20x;
   }
  
-  .kriterijumLabel{
+  /* .kriterijumLabel{
     margin-left: 20px;
-  }
+  } */
   .dugmeSacuvaj {
     background-color: #149bc4;
     border: none;
@@ -55,3 +58,23 @@
   }
 
   .highlight { background-color: rgb(170, 223, 226); }
+
+  .izvestaj-grid>div{
+    margin-top: 5px;
+  }
+  .izvestaj-grid{
+    margin-left:5px;
+  }
+  .izvestaj-grid>div>label{
+    min-width: 85px;
+  }
+  .izvestaj-grid>div>input{
+    min-width: 300px;
+  }
+  .pretraga-klijenta{
+    margin-top:30px;
+    margin-bottom: 30px;
+  }
+  .margin-top-auto{
+    margin-top: auto;
+  }

@@ -78,3 +78,9 @@ h2{
     border-radius: 8px;
     margin-top: 8pt;
   }
+  .porukica{
+      color: red;
+      margin-left: 20pt;
+  }
+
+.highlight { background-color: rgb(187, 208, 209); }

@@ -27,7 +27,7 @@
             <td>{{klijent.brlk}}</td>
             <td>{{klijent.email}}</td>
             <td>{{klijent.adresa}}</td>
-            <td><button (click)="obrisiKlijenta(i)">Obrisi</button></td>
+            <td><button (click)="openDialogVerification(i)">Obrisi</button></td>
             <td><button [routerLink]="'/unos-klijenta/'+klijent.id">Izmeni</button></td>
         </tr>    
 

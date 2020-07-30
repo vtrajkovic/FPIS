@@ -14,7 +14,7 @@
       <th>Klijent</th>
       <th>Radni nalog</th>
     </tr>
-    <tr *ngFor = "let izvestaj of izvestaji; let i = index">
+    <tr *ngFor = "let izvestaj of izvestaji; let i = index" (click)="selectRow(i)" [ngClass]="{'highlight': selectRowIndex === i}">
       <td>{{izvestaj.id}}</td>
       <td>{{izvestaj.datum}}</td>
       <td>{{izvestaj.klijent}}</td>
@@ -34,10 +34,10 @@
 <input type="date" id="datum" name="datum" formControlName="datum">
 
 <label for="nalozi">Radni nalog:</label>
-<input name="nalozi" id="nalozi" formControlName="nalogid">
+<input name="nalozi" id="nalozi" formControlName="nalogId">
 
 <label for="klijentIme">Klijent:</label>
-<input name="klijentIme" id="klijentIme"  formControlName="klijent" readonly>
+<input name="klijentIme" id="klijentIme"  formControlName="klijentId" readonly>
 
 <label for="kriterijumPretrageKlijenta" class="kriterijumLabel">Kriterijum za pretragu klijenta:</label>
 <input type="text" id="kriterijumPretrageKlijenta" name="kriterijumPretrageKlijenta" [(ngModel)]="kriterijumKlijenti" [ngModelOptions]="{standalone: true}">
@@ -52,7 +52,7 @@
       <th>E-mail</th>
     </tr>
 
-    <tr *ngFor = "let klijent of klijenti; let i = index" (click) = "selectedRow(i)">
+    <tr *ngFor = "let klijent of klijenti; let i = index" (click) = "selectedRow(i)" [ngClass]="{'highlight': selectedRowIndex === i}">
       <td>{{klijent.id}}</td>
       <td>{{klijent.naziv}}</td>
       <td>{{klijent.email}}</td>
@@ -60,7 +60,7 @@
 
 </table>
 
-<button type="submit" class = "dugmeSacuvaj" [disabled] = "!izvestajForma.valid" >Sacuvaj izvestaj</button> {{izvestajForma.valid}}
+<button type="submit" class = "dugmeSacuvaj" [disabled] = "!izvestajForma.valid">Sacuvaj izvestaj</button> {{izvestajForma.valid}}
 </form>
 <!-- <button type="button" class = "dugmeSacuvaj">Dodaj novi izvestaj</button>
 <button type="button" class = "dugmeSacuvaj">Izmeni izvestaj</button> -->

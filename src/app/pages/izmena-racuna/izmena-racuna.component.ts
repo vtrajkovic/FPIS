@@ -4,6 +4,7 @@ import { MetodeAPIService } from 'src/app/metode-api.service';
 import { NgSelectOption } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogRacunComponent } from '../dialog-racun/dialog-racun.component';
+import { RacunModel } from 'src/app/models/RacunModel';
 
 @Component({
   selector: 'app-izmena-racuna',
@@ -11,8 +12,8 @@ import { DialogRacunComponent } from '../dialog-racun/dialog-racun.component';
   styleUrls: ['./izmena-racuna.component.css']
 })
 export class IzmenaRacunaComponent implements OnInit {
-  brojRacuna;
-  racun;
+  public brojRacuna: string;
+  public racun: RacunModel;
   constructor(
     private route: ActivatedRoute,
     private metodeAPI: MetodeAPIService,

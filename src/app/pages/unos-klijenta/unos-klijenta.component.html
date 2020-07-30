@@ -29,6 +29,7 @@
       type="text"
       id="datumRodjenja"
       name="datumRodjenja"
+      placeholder= "yyyy-MM-dd"
       formControlName="datumRodj"
     />
 
@@ -37,6 +38,7 @@
       type="text"
       id="email"
       name="email"
+      placeholder="npr. pera@gmail.com"
       formControlName="email"
     />
 
@@ -91,7 +93,7 @@
       {{racunForma.valid}}
     </div>
     
-
+    <span class = "porukica">*Izmena broja racuna nije dozvoljena.</span>
     <table style="width: 100%;" class="tabela">
       <tr>
         <th>Broj racuna</th>
@@ -99,11 +101,11 @@
         <th>Tip racuna</th>
       </tr>
 
-      <tr *ngFor="let racun of racuni; let i = index">
+      <tr *ngFor="let racun of klijent.listaRacuna; let i = index" (click)="selectRow(i)" [ngClass]="{'highlight': selectedRow === i}">
         <td>{{ racun.brojRacuna }}</td>
         <td>{{ racun.zaPlatu }}</td>
         <td>{{ racun.tip }}</td>
-        <td><button type = "button"(click)="obrisiRacun(i)">Obrisi</button></td>
+        <td><button type = "button"(click)="brisanjeRacuna(i)">Obrisi</button></td>
         <td><button type = "button" (click)="openDialog(i)">Izmeni</button></td>
       </tr>
     </table>

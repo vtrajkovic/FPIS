@@ -1,63 +1,45 @@
 <form [formGroup]="klijentForma" (ngSubmit) = "onSubmitKlijent()">
   <div class="userInputContainer" *ngIf="klijent">
-    <label for="jmbg">JMBG:</label>
-    <input
-      type="text"
-      id="jmbg"
-      name="jmbg"
-      formControlName="jmbg"
-    />
 
-    <label for="imePrezime">Ime i prezime:</label>
-    <input
-      type="text"
-      id="imePrezime"
-      name="imePrezime"
-      formControlName="imePrezime"
-    />
+    <div>
+      <div class="row input-klijent">
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+          <label for="jmbg">JMBG:</label>
+          <input type="text" id="jmbg" name="jmbg"formControlName="jmbg" placeholder="13 cifara" [ngClass] = "{'validation': !klijentForma.controls['jmbg'].valid}"/>
+        </div>
+  
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+          <label for="imePrezime">Ime i prezime:</label>
+          <input type="text" id="imePrezime" name="imePrezime" formControlName="imePrezime" [ngClass] = "{'validation': !klijentForma.controls['imePrezime'].valid}"/>
+        </div>
 
-    <label for="brlk">Broj licne karte:</label>
-    <input
-      type="text"
-      id="brlk"
-      name="brlk"
-      formControlName="brlk"
-    />
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+          <label for="brlk">Broj licne karte:</label>
+          <input type="text" id="brlk" name="brlk"formControlName="brlk" [ngClass] = "{'validation': !klijentForma.controls['brlk'].valid}"/>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+          <label for="datumRodjenja">Datum rodjenja:</label>
+          <input type="text" id="datumRodjenja" name="datumRodjenja" placeholder= "yyyy-MM-dd" formControlName="datumRodj" [ngClass] = "{'validation': !klijentForma.controls['datumRodj'].valid}"/>
+        </div>
 
-    <label for="datumRodjenja">Datum rodjenja:</label>
-    <input
-      type="text"
-      id="datumRodjenja"
-      name="datumRodjenja"
-      placeholder= "yyyy-MM-dd"
-      formControlName="datumRodj"
-    />
+      </div>
+      <div class="row input-klijent">
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+          <label for="email">E-mail:</label>
+          <input type="text" id="email" name="email" placeholder="npr. pera@gmail.com" formControlName="email" [ngClass] = "{'validation': !klijentForma.controls['email'].valid}"/>
+        </div>
+  
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+          <label for="drzavljanstvo">Drzavljanstvo:</label>
+          <input type="text" id="drzavljanstvo" name="drzavljanstvo" formControlName="drzavljanstvo" [ngClass] = "{'validation': !klijentForma.controls['drzavljanstvo'].valid}" />
+        </div>
 
-    <label for="email">E-mail:</label>
-    <input
-      type="text"
-      id="email"
-      name="email"
-      placeholder="npr. pera@gmail.com"
-      formControlName="email"
-    />
-
-    <label for="drzavljanstvo">Drzavljanstvo:</label>
-    <input
-      type="text"
-      id="drzavljanstvo"
-      name="drzavljanstvo"
-      formControlName="drzavljanstvo"
-    />
-
-    <label for="adresa">Adresa:</label>
-    <input
-      type="text"
-      id="adresa"
-      name="adresa"
-      formControlName="adresa"
-    />
-    {{klijentForma.valid}}
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+          <label for="adresa">Adresa:</label>
+          <input type="text" id="adresa"name="adresa" formControlName="adresa" [ngClass] = "{'validation': !klijentForma.controls['adresa'].valid}" />
+        </div>
+      </div>
+    </div>
     <!-- <button type = "submit" class="dugme" [disabled] = "!klijentForma.valid">Dodaj klijenta</button> -->
   </div>
 </form>
@@ -66,31 +48,33 @@
   <h2>Rad sa racunima</h2>
 
   <div class="racuni">
-    <label for="brojRacuna">Broj racuna:</label>
-    <input
-      type="text"
-      id="brojRacuna"
-      name="brojRacuna"
-      formControlName="brojRacuna"
-    />
-
-    <label for="zaPlatu">Za platu:</label>
-    <select name="zaPlatu" id="zaPlatu" formControlName="zaPlatu">
-      <option value="da">Da</option>
-      <option value="ne">Ne</option>
-    </select>
-
-    <label for="tipRacuna">Tip racuna:</label>
-    <select name="tipRacuna" id="tipRacuna" formControlName="tip">
-      <option value="devizni">Devizni</option>
-      <option value="tekuci">Tekuci</option>
-      <option value="dinarski">Dinarski</option>
-      <option value="stedni">Stedni</option>
-    </select>
+    <div class="row input-fields">
+      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+        <label for="brojRacuna">Broj racuna:</label>
+        <input type="text" id="brojRacuna" name="brojRacuna" formControlName="brojRacuna" [ngClass] = "{'validation': !racunForma.controls['brojRacuna'].valid}"/>
+      </div>
+      
+      <div class="col-sm-12 col-md-6 col-lg-3 col-xl-4">
+        <label for="tipRacuna">Tip racuna:</label>
+        <select name="tipRacuna" id="tipRacuna" formControlName="tip" >
+          <option value="devizni">Devizni</option>
+          <option value="tekuci">Tekuci</option>
+          <option value="dinarski">Dinarski</option>
+          <option value="stedni">Stedni</option>
+        </select>
+      </div>
+      
+      <div class="col-sm-12 col-md-6 col-lg-3 col-xl-4">
+        <label for="zaPlatu">Za platu:</label>
+        <select name="zaPlatu" id="zaPlatu" formControlName="zaPlatu">
+          <option value="da">Da</option>
+          <option value="ne">Ne</option>
+        </select>
+      </div>
+  </div>
 
     <div class="dugmici">
       <button type="submit" class="dugme" [disabled] = "!racunForma.valid">Dodaj</button>
-      {{racunForma.valid}}
     </div>
     
     <span class = "porukica">*Izmena broja racuna nije dozvoljena.</span>

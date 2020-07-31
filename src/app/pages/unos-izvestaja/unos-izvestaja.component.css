@@ -55,6 +55,7 @@
   .kriterijumContainer{
     margin-left: 20px;
     margin-bottom: 15px;
+    margin-top: 15px;
   }
 
   .highlight { background-color: rgb(170, 223, 226); }
@@ -78,3 +79,7 @@
   .margin-top-auto{
     margin-top: auto;
   }
+
+  .validation{
+    border-color: red;
+}

@@ -1,17 +1,26 @@
 .userInputContainer{
-    margin-top: 20pt;
+    margin-top: 10px;
     margin-bottom: 0pt;
     margin-right: 20pt;
+    margin-left: 20px;
 }
 
-.userInputContainer>label{
+.userInputContainer>div>label{
     margin-left: 20pt;
     margin-bottom: 10pt;
 }
-
 .userInputContainer>input{
     margin-left: 20pt;
     margin-bottom: 10pt;
+}
+.input-klijent>div>label{
+    min-width: 106px;
+}
+.input-klijent>div>input{
+    min-width: 225px;
+}
+.row{
+    margin-top: 10px;
 }
 
 h2{
@@ -52,20 +61,31 @@ h2{
 .racuni{
     margin-top: 20pt;
     margin-bottom: 0pt;
-    margin-right: 20pt;
-    
+    margin-right: 20pt;  
 }
-
 .racuni>label{
     margin-left: 20pt;
     margin-bottom: 10pt;
 }
+.input-fields{
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+.input-fields>div>input{
+    min-width: 220px;
+}
+.input-fields>div>label{
+    min-width: 84px;
+}
+.input-fields>div>select{
+    min-width: 84px;
+}
+
 
 .racuni>input{
     margin-left: 20pt;
     margin-bottom: 10pt;
 }
-
 .dugmici{
     margin-left: 4pt;
 }
@@ -90,3 +110,8 @@ h2{
   }
 
 .highlight { background-color: rgb(187, 208, 209); }
+
+.validation{
+    border-color: red;
+}
+

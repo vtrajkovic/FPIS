@@ -2,111 +2,119 @@
   <div>
     <div class="row">
       <div class="col-sm-8 col-md-8 col-lg-6 col-xl-6">
-        <label for="kriterijumPretrageIzvestaja">Kriterijum za pretragu izvestaja:</label>
-        <input type="text" id="kriterijumPretrageIzvestaja" name="kriterijumPretrageIzvestaja" [(ngModel)]="kriterijum">
+        <label for="kriterijumPretrageIzvestaja"
+          >Kriterijum za pretragu izvestaja:</label
+        >
+        <input
+          type="text"
+          id="kriterijumPretrageIzvestaja"
+          name="kriterijumPretrageIzvestaja"
+          [(ngModel)]="kriterijum"
+        />
       </div>
 
       <div class="col-sm-4 col-md-4 col-lg-6 col-xl-6 margin-top-auto">
-        <button type="button" class = "dugme" (click) = "uzmiIzvestaje()">Pronadji</button>
+        <button type="button" class="dugme" (click)="uzmiIzvestaje()">
+          Pronadji
+        </button>
       </div>
-
     </div>
   </div>
-  
-
-  
-
 </div>
 
-<table class= "tabela">
-    <tr>
-      <th>ID</th>
-      <th>Datum</th>
-      <th>Klijent</th>
-      <th>Radni nalog</th>
-    </tr>
-    <tr *ngFor = "let izvestaj of izvestaji; let i = index" (click)="selectRow(i)" [ngClass]="{'highlight': selectRowIndex === i}">
-      <td>{{izvestaj.id}}</td>
-      <td>{{izvestaj.datum}}</td>
-      <td>{{izvestaj.klijent}}</td>
-      <td>{{izvestaj.nalogid}}</td>
-      <td><button (click) = "openDialog(i)">Izmeni</button></td>
-      <td><button (click) = "openDialogVerification(i)">Obrisi</button></td>
-    </tr>
+<table class="tabela">
+  <tr>
+    <th>ID</th>
+    <th>Datum</th>
+    <th>Klijent</th>
+    <th>Radni nalog</th>
+  </tr>
+  <tr
+    *ngFor="let izvestaj of izvestaji; let i = index"
+    (click)="selectRow(i)"
+    [ngClass]="{ highlight: selectRowIndex === i }"
+  >
+    <td>{{ izvestaj.id }}</td>
+    <td>{{ izvestaj.datum }}</td>
+    <td>{{ izvestaj.klijent }}</td>
+    <td>{{ izvestaj.nalogid }}</td>
+    <td><button (click)="openDialog(i)">Izmeni</button></td>
+    <td><button (click)="openDialogVerification(i)">Obrisi</button></td>
+  </tr>
 </table>
 
-
-
-<form [formGroup]="izvestajForma" (ngSubmit) = "onSubmitIzvestaj()">
-<div class = "clientInputContainter" *ngIf = "izvestaj">
-
-<div>
-  <div class="row izvestaj-grid">
-
-    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-      <label for="IDIzvestaj">ID Izvestaja:</label>
-      <input type="text" id="IDIzvestaj" name="IDIzvestaj" readonly>
-    </div>
-    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-      <label for="datum">Datum:</label>
-      <input type="date" id="datum" name="datum" formControlName="datum">
-    </div>
-    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-      <label for="nalozi">Radni nalog:</label>
-      <input name="nalozi" id="nalozi" formControlName="nalogId">
-    </div>
-    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-      <label for="klijentIme">Klijent:</label>
-      <input name="klijentIme" id="klijentIme"  formControlName="klijentId" readonly>
-    </div>
-    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-      <label for="klijentIme">Klijent:</label>
-      <input name="klijentIme" id="klijentIme"  formControlName="klijentId" readonly>
-    </div>
-    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-      <label for="klijentIme">Klijent:</label>
-      <input name="klijentIme" id="klijentIme"  formControlName="klijentId" readonly>
+<form [formGroup]="izvestajForma" (ngSubmit)="onSubmitIzvestaj()">
+  <div class="clientInputContainter" *ngIf="izvestaj">
+    <div>
+      <div class="row izvestaj-grid">
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+          <label for="IDIzvestaj">ID Izvestaja:</label>
+          <input type="text" id="IDIzvestaj" name="IDIzvestaj" readonly />
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+          <label for="datum">Datum:</label>
+          <input type="date" id="datum" name="datum" formControlName="datum" [ngClass] = "{'validation': !izvestajForma.controls['datum'].valid}"/>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+          <label for="nalozi">Radni nalog:</label>
+          <input name="nalozi" id="nalozi" formControlName="nalogId" [ngClass] = "{'validation': !izvestajForma.controls['nalogId'].valid}"/>
+        </div>
+          <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+            <label for="klijentIme">Klijent:</label>
+            <input
+              name="klijentIme"
+              id="klijentIme"
+              formControlName="klijentId"
+              readonly
+            />
+        </div>
+      </div>
     </div>
 
+    <div>
+      <div class="row pretraga-klijenta">
+        <div class="col-sm-8 col-md-8 col-lg-6 col-xl-5">
+          <label for="kriterijumPretrageKlijenta" class="kriterijumLabel"
+            >Kriterijum za pretragu klijenta:</label
+          >
+          <input
+            type="text"
+            id="kriterijumPretrageKlijenta"
+            name="kriterijumPretrageKlijenta"
+            [(ngModel)]="kriterijumKlijenti"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+
+        <div class="col-sm-4 col-md-4 col-lg-6 col-xl-7 margin-top-auto">
+          <button type="button" class="dugme" (click)="uzmiKlijente()">
+            Pronadji
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-
-<div>
-  <div class="row pretraga-klijenta">
-
-    <div class="col-sm-8 col-md-8 col-lg-6 col-xl-5">
-      <label for="kriterijumPretrageKlijenta" class="kriterijumLabel">Kriterijum za pretragu klijenta:</label>
-      <input type="text" id="kriterijumPretrageKlijenta" name="kriterijumPretrageKlijenta" [(ngModel)]="kriterijumKlijenti" [ngModelOptions]="{standalone: true}">
-    </div>
-
-    <div class="col-sm-4 col-md-4 col-lg-6 col-xl-7 margin-top-auto">
-      <button type="button" class = "dugme" (click) = "uzmiKlijente()">Pronadji</button>
-    </div>
-
-  </div>
-</div>
-
-
-
-</div>
-<table class= "tabela">
+  <table class="tabela">
     <tr>
       <th>ID</th>
       <th>Naziv klijenta</th>
       <th>E-mail</th>
     </tr>
 
-    <tr *ngFor = "let klijent of klijenti; let i = index" (click) = "selectedRow(i)" [ngClass]="{'highlight': selectedRowIndex === i}">
-      <td>{{klijent.id}}</td>
-      <td>{{klijent.naziv}}</td>
-      <td>{{klijent.email}}</td>
+    <tr
+      *ngFor="let klijent of klijenti; let i = index"
+      (click)="selectedRow(i)"
+      [ngClass]="{ highlight: selectedRowIndex === i }"
+    >
+      <td>{{ klijent.id }}</td>
+      <td>{{ klijent.naziv }}</td>
+      <td>{{ klijent.email }}</td>
     </tr>
+  </table>
 
-</table>
-
-<button type="submit" class = "dugmeSacuvaj" [disabled] = "!izvestajForma.valid">Sacuvaj izvestaj</button> {{izvestajForma.valid}}
+  <button type="submit" class="dugmeSacuvaj" [disabled]="!izvestajForma.valid">
+    Sacuvaj izvestaj
+  </button>
 </form>
 <!-- <button type="button" class = "dugmeSacuvaj">Dodaj novi izvestaj</button>
 <button type="button" class = "dugmeSacuvaj">Izmeni izvestaj</button> -->
-
-

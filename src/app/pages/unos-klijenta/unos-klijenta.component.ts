@@ -119,6 +119,10 @@ export class UnosKlijentaComponent implements OnInit {
   dodajRacun() {
     if (this.isEdit) {
       this.onSubmitRacun();
+      this.klijent.listaRacuna.push(
+        JSON.parse(JSON.stringify(this.racunForma.value))
+      );
+      
     } else {
       this.klijent.listaRacuna.push(
         JSON.parse(JSON.stringify(this.racunForma.value))
@@ -192,6 +196,7 @@ export class UnosKlijentaComponent implements OnInit {
       if (value == 'da') {
         console.log('Vratilo se:', value);
         this.obrisiRacun(index);
+        this.klijent.listaRacuna.splice(index, 1);
       }
     });
   }

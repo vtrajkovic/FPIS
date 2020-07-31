@@ -17,7 +17,7 @@ td {
   display: inline-block;
   font-size: 16px;
   margin-bottom: 4px;
-  margin-top: 20px;
+  margin-top: 15px;
   margin-left: 20px;
   border-radius: 8px;
 }
@@ -31,8 +31,5 @@ td {
 .kriterijumContainer {
   margin-left: 20px;
   margin-bottom: 15px;
-}
-
-.kriterijumContainer {
-  margin-left: 20pt;
+  margin-top: 8px;
 }
